@@ -4,10 +4,57 @@ import { StyleSheet, Text, View, ActivityIndicator, FlatList, ScrollView, SafeAr
 
 import Profile from './profile.js';
 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Explore from './screens/explore'
+import About from './screens/about'
+
+import _About from './screens/_about'
 
 console.log("🚀 Running");
 
 
+
+
+
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator initialRouteName="Explore"
+      tabBarOptions={{
+        activeTintColor: '#708090',
+      }}
+    >
+      <Tab.Screen name="Explore" component={Explore} options={{
+        tabBarLabel: 'Explore',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="atom" color={color} size={size} />
+        ),
+      }}
+      />
+      <Tab.Screen name="About" component={_About} options={{
+        tabBarLabel: 'About',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="barley" color={color} size={size} />
+        ),
+      }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}
+
+/*
 
 export default function App() {
 
@@ -24,18 +71,7 @@ export default function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  /*
-    const [info, setInfo] = useState([]);
-  
-    useEffect(() => {
-      fetch('https://api.github.com/users/Joaosilgo')
-        .then((response) => response.json())
-        .then((json) => setInfo(json))
-        .catch((error) => console.error(error));
-  
-    }, []);
-  
-    */
+
 
 
 
@@ -87,16 +123,6 @@ export default function App() {
 
 
 
-  /*
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text></Text>
-        <StatusBar style="auto" />
-      </View>
-    );
-    */
-
 
 
 
@@ -133,3 +159,9 @@ const styles = StyleSheet.create({
 
 
 });
+
+
+
+*/
+
+
