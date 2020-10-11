@@ -5,7 +5,7 @@ import React, { useEffect, useState, Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 
 
-import Profile from '../profile';
+
 
 
 
@@ -41,7 +41,7 @@ function Projects() {
 
 
 
-            <Profile />
+     
 
 
             {isLoading ? <ActivityIndicator size="small" color="#0000ff" /> : (

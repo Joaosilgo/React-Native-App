@@ -80,6 +80,9 @@ class Profile extends Component {
 
 
 
+
+
+
    state = {
       data: ''
    }
@@ -104,7 +107,11 @@ class Profile extends Component {
 
    render() {
       return (
-         <View>
+         <View style={styles.container}>
+      <View style={styles.headerContainer}>
+        <Text style={styles.heading}>Hello</Text>
+        <Text style={styles.desc}>I'm João Gomes. A Computer Engineering Student , from Portugal</Text>
+      </View>
             {/* 
               <Text>
                  {this.state.data.name}               
@@ -134,7 +141,7 @@ class Profile extends Component {
               */}
 
             <CardHome
-               name="Home"
+               name="Account"
                info={{
                   avatar_url: this.state.data.avatar_url,
                   login: this.state.data.login,
@@ -202,10 +209,13 @@ const styles = StyleSheet.create({
       marginTop: 10,
       flexDirection: 'row',
       justifyContent: 'space-around',
+      color: '#708090',
    },
    cardBottomTitle: {
-      fontSize: 10,
+      fontSize: 7.5,
       marginTop: 5,
+      textAlign: 'center',
+      color: '#708090',
    },
    cardGroupIcon: {
       justifyContent: 'space-around',
@@ -261,10 +271,10 @@ const styles = StyleSheet.create({
       marginTop: 5,
    },
    cardAvatar: {
-      height: 60,
-      width: 60,
-      backgroundColor: 'gray',
-      borderRadius: 60,
+      height: 50,
+      width: 50,
+      backgroundColor: 'white',
+      borderRadius: 50,
    },
    cardHeaderContaner: {
       flexDirection: 'row',

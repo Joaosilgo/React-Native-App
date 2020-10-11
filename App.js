@@ -11,6 +11,7 @@ import Explore from './screens/explore'
 import About from './screens/about'
 
 import _About from './screens/_about'
+import Home from './screens/home'
 
 console.log("🚀 Running");
 
@@ -35,6 +36,14 @@ function MyTabs() {
         ),
       }}
       />
+      <Tab.Screen name="Home" component={Home} options={{
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="lighthouse" color={color} size={size} />
+        ),
+      }}
+      />
+
       <Tab.Screen name="About" component={_About} options={{
         tabBarLabel: 'About',
         tabBarIcon: ({ color, size }) => (
