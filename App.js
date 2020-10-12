@@ -1,24 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
-
-import Profile from './profile.js';
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Explore from './screens/explore'
-
-
-import _About from './screens/_about'
-import Home from './screens/home'
-
-console.log("🚀 Running");
+import Explore from './screens/explore';
+import _About from './screens/_about';
+import Home from './screens/home';
+import Profile from './profile.js';
 
 
 
-
-
+//console.log(":) Running");
 
 const Tab = createBottomTabNavigator();
 
@@ -27,22 +20,13 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
 
-
-    
-    
-
     <Tab.Navigator initialRouteName="Explore"
       tabBarOptions={{
         activeTintColor: '#2f4f4f',
         inactiveTintColor: '#c0c0c0',
-        
-        
       }}
+      >
 
-   
-     
-    >
-      
       <Tab.Screen name="Explore" component={Explore} options={{
         tabBarLabel: 'Explore',
         tabBarIcon: ({ color, size }) => (
@@ -51,15 +35,12 @@ function MyTabs() {
       }}
       />
       <Tab.Screen name="Home" component={Home} options={{
-        
         tabBarLabel: 'Home',
-        
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="lighthouse" color={color} size={size} />
         ),
       }}
       />
-
       <Tab.Screen name="About" component={_About} options={{
         tabBarLabel: 'About',
         tabBarIcon: ({ color, size }) => (
@@ -73,9 +54,7 @@ function MyTabs() {
 
 export default function App() {
   return (
-
     <NavigationContainer>
-         
       <MyTabs />
     </NavigationContainer>
   );
@@ -84,8 +63,6 @@ export default function App() {
 /*
 
 export default function App() {
-
-
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -98,24 +75,10 @@ export default function App() {
       .finally(() => setLoading(false));
   }, []);
 
-
-
-
-
   return (
 
-
-
-
-
-
     <View style={{ flex: 1, padding: 24, alignContent: 'center', justifyContent: 'center', }} >
-
-
       <Profile />
-
-
-
       {isLoading ? <ActivityIndicator size="small" color="#0000ff" /> : (
         <FlatList
           data={data}
@@ -134,26 +97,13 @@ export default function App() {
                 <Button title=" URL " onPress={() => Linking.openURL(item.html_url)}>Touch Here</Button>
               </View>
             </TouchableHighlight>
-
           </View>)}
-
-
         />
       )}
-
-
     </View >
-
-
-
   );
-
-
-
-
-
-
 }
+
 
 const styles = StyleSheet.create({
   item: {
@@ -181,14 +131,10 @@ const styles = StyleSheet.create({
     fontSize: 28,
   }
 
-
-
-
-
 });
-
-
-
 */
 
+const styles = StyleSheet.create({
 
+  
+});

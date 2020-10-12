@@ -10,18 +10,13 @@ import { StyleSheet, Text, View, ActivityIndicator, FlatList, ScrollView, SafeAr
 
 class Home extends Component {
 
-
-
-
-
     render() {
         return (
-            
-            <View style={styles.container}>
-            
-                <Profile/>
-            </View>
-          
+            <ScrollView>
+                <SafeAreaView style={styles.container}>
+                    <Profile />
+                </SafeAreaView >
+            </ScrollView>
 
         );
 
@@ -35,6 +30,5 @@ export default Home;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        
     }
 });

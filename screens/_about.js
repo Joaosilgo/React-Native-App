@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, Animated, Image, Dimensions, ScrollView, TouchableOpacity, Linking } from 'react-native'
-
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import { Text, StyleSheet, View, Animated, Image, Dimensions, ScrollView, TouchableOpacity, Linking, SafeAreaView } from 'react-native'
 import * as theme from '../theme';
 
 const { width, height } = Dimensions.get('window');
@@ -82,7 +78,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: theme.sizes.font * 2,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#2f4f4f'
     },
     description: {
         fontSize: theme.sizes.font * 1,
@@ -94,21 +91,13 @@ const styles = StyleSheet.create({
 class Article extends Component {
     scrollX = new Animated.Value(0);
 
-
-
-
-
     render() {
 
 
         return (
-
-
             <ScrollView>
-                <View style={styles.flex}>
+                <SafeAreaView style={styles.flex}>
                     <View style={[styles.flex]}>
-
-
                         <ScrollView
                             horizontal
                             pagingEnabled
@@ -117,41 +106,22 @@ class Article extends Component {
                             decelerationRate={0}
                             scrollEventThrottle={16}
                             snapToAlignment="center"
-                            onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: this.scrollX } } }], { useNativeDriver: true })}
-                        >
+                            onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: this.scrollX } } }], { useNativeDriver: true })}>
 
-                            <Image
-
-                                source={require('../Assets/banner.jpg')}
-                                resizeMode='cover'
-                                style={{ width, height: width }}
-                            />
-
+                            <Image source={require('../Assets/banner.jpg')} resizeMode='cover' style={{ width, height: width }} />
                         </ScrollView>
-
-
                     </View>
 
                     <View style={[styles.flex, styles.content]}>
                         <View style={[styles.flex, styles.contentHeader]}>
-
-
-
-
-
                             <Text style={styles.title}>João Gomes</Text>
-
                             {/* </View> <TouchableOpacity onPress={() => Linking.openURL('https://github.com/Joaosilgo')}> */}
-
                             <Text style={styles.description}>Finalist in Computer Engineering Degree, for the last three consecutive years i had the opportunity of acquire technical knowledge and practices at the level of various programming languages ​​and business management where various work methodology was imposed, methodology based on requirements gathering, analysis, design, implementation, installation, maintenance as well as a project management. It has been a course with a strong component of practice, where I have been acquiring a lot of knowledge that serves as a basis for entering in the market. At this point is only missing an internship component curriculum for finish the degree...</Text >
-                            <Text style={{ color: theme.colors.active }} onPress={() => Linking.openURL('https://github.com/Joaosilgo')}> Read more</Text>
-
-
+                            <Text style={{ color: theme.colors.active }} onPress={() => Linking.openURL('https://github.com/Joaosilgo')}> Read More </Text>
                             {/* </TouchableOpacity> */}
                         </View>
                     </View>
-
-                </View>
+                </SafeAreaView >
             </ScrollView>
         )
     }

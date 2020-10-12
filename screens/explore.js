@@ -1,16 +1,12 @@
 
-
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, Share, TouchableOpacity, ToastAndroid, RefreshControl, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
-
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
 import Octicons from 'react-native-vector-icons/Octicons';
-
+import Entypo from 'react-native-vector-icons/Entypo';
 
 async function onShare(name, description, url) {
     try {
@@ -43,7 +39,7 @@ async function onShare(name, description, url) {
 export const CardProject = ({ info }) => {
     return (
         <TouchableOpacity activeOpacity={0.7}>
-            <View style={styles.cardContainer}>
+            <SafeAreaView style={styles.cardContainer}>
                 <View style={styles.cardBody}>
                     <View style={styles.cardBodyTop}>
                         <View style={styles.cardLeftSide}>
@@ -53,28 +49,46 @@ export const CardProject = ({ info }) => {
                             <Text style={styles.cardAddress}>{info.language}</Text>
                             <Text style={styles.cardAddress}>{info.login}</Text>
                             {/*  <Text style={styles.tag}>{info.html_url}</Text> */}
+                            <View style={styles.cardBodyBottom}>
+
+                                <TouchableOpacity activeOpacity={0.4} >
+                                    <MaterialIcons name="star" color="gray" />
+                                    <Text color="gray" style={styles.cardBottomTitle}>{info.stargazers_count}</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity activeOpacity={0.4} >
+                                    <AntDesign name="fork" color="gray" />
+                                    <Text color="gray" style={styles.cardBottomTitle}>{info.forks_count}</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity activeOpacity={0.4} >
+                                    <AntDesign name="eye" color="gray" />
+                                    <Text color="gray" style={styles.cardBottomTitle}>{info.watchers_count}</Text>
+                                </TouchableOpacity>
+                            </View>
 
                             <View style={styles.iconMore}>
                                 <Icon name="angle-right" color="gray" onPress={() => Linking.openURL(info.html_url)} />
                             </View>
+
                             <View style={styles.margin} />
                             <View style={styles.cardBodyBottom} >
                                 <View style={styles.cardGroupIcon}>
                                     <TouchableOpacity activeOpacity={0.4} onPress={() => Linking.openURL(info.html_url)} >
-                                        <Octicons name="logo-github" size={16} />
+                                        <Octicons color="gray" name="logo-github" size={16} />
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.cardGroupIcon}>
                                     <TouchableOpacity activeOpacity={0.4} onPress={() => onShare(info.name, info.description, info.html_url)} >
-                                        <AntDesign name="sharealt" size={16} />
-                                        <Text style={styles.cardBottomTitle}  >Share</Text>
+                                        <AntDesign color="gray" name="sharealt" size={16} />
+                                        <Text color="gray" style={styles.cardBottomTitle} >Share</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-            </View>
+            </ SafeAreaView >
         </TouchableOpacity>
     );
 };
@@ -85,8 +99,6 @@ export const CardProject = ({ info }) => {
 
 
 function Projects() {
-
-
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -105,31 +117,21 @@ function Projects() {
 
     return (
 
-
-
-
-
-
-
-
-
         /*  <View style={{ flex: 1, padding: 24, alignContent: 'center', justifyContent: 'center', }} > */
 
         <View>
-
             <View style={styles.headerContainer}>
-                <Text style={styles.heading}>Projectos</Text>
+                <Text style={styles.heading} >
+                    <Entypo name="network" color="#708090" size={32} /> Projectos</Text>
                 <Text style={styles.desc}>Repositório</Text>
             </View>
 
-
-
             {
-                isLoading ? <ActivityIndicator size="small" color="#0000ff" /> : (
+                isLoading ? <ActivityIndicator size="small" color="#dddddd" /> : (
                     <FlatList
                         data={data}
                         keyExtractor={({ id }, index) => id.toString()}
-
+                        initialNumToRender={3}
                         renderItem={({ item }) => (<View style={{ flex: 1 }} >
 
                             {/*   <Text style={styles.title}>{"\n"}{item.name}{"\n"}</Text>
@@ -156,33 +158,20 @@ function Projects() {
                                     language: item.language,
                                     login: item.owner.login,
                                     html_url: item.html_url,
+                                    stargazers_count: item.stargazers_count,
+                                    forks_count: item.forks_count,
+                                    watchers_count: item.watchers_count,
 
                                 }}
                             />
-
-
-
-
-
                         </View>)}
-
 
                     />
                 )
             }
 
-
         </View >
-
-
-
     );
-
-
-
-
-
-
 }
 
 const styles = StyleSheet.create({
@@ -272,7 +261,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cardName: {
-        color: '#222',
+        color: '#2f4f4f',
         fontSize: 18,
         fontWeight: 'bold',
     },
@@ -376,10 +365,6 @@ const styles = StyleSheet.create({
 
 class Explore extends Component {
 
-
-
-
-
     render() {
         return (
             /*
@@ -388,12 +373,10 @@ class Explore extends Component {
             </View>
             */
             <Projects />
-
         );
-
-
     }
 }
+
 export default Explore;
 
 /*

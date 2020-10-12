@@ -3,7 +3,7 @@ const colors = {
     white: '#FFF',
     gray: '#DCE0E9',
     caption: '#BCCCD4',
-    active: '#007BFA',
+    active: '#2f4f4f',
 };
 
 const sizes = {
