@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, ActivityIndicator, FlatList, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Alert, Vibration, ToastAndroid,  ActivityIndicator, FlatList, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Fontisto';
 
@@ -9,9 +9,26 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import Octicons from 'react-native-vector-icons/Octicons';
+import * as theme from './theme';
 
 
+const ONE_SECOND_IN_MS = 1000;
+const PATTERN = [75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,225,75,75,75,225,75,75,75,225,75,75,75,225,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75,75,225,75,75,75,75,75,75];
 
+
+const showAlert = () =>{
+   Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      
+      [
+        {text: 'Ask me later', onPress: () => ToastAndroid.showWithGravity('All Your Base Are Belong To Us', ToastAndroid.LONG, ToastAndroid.BOTTOM)},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () =>  Vibration.vibrate(PATTERN) },
+      ],
+      { cancelable: false }
+    )
+}
 
 
 
@@ -21,7 +38,9 @@ export const CardHome = ({ name, info }) => {
 
          <View style={styles.cardHeaderContaner}>
             <Text style={styles.cardHeading}>{name}</Text>
+            <TouchableOpacity activeOpacity={0.4} onPress = {showAlert} >
             <Text style={styles.cardMore}>See All</Text>
+            </TouchableOpacity>
          </View>
 
          <View style={styles.cardBody}>
@@ -38,23 +57,38 @@ export const CardHome = ({ name, info }) => {
                   <Text style={styles.cardName}>{info.name}</Text>
                   <Text style={styles.cardTime}>{info.bio}</Text>
                   <Text style={styles.cardAddress}>{info.location}</Text>
+                  <Text style={{ color: theme.colors.active }} onPress={() => Linking.openURL('mailto:joaosilgo96@gmail.com?subject=Hey&body=whasuppp 👽')}> joaosilgo96@gmail.com </Text>
                   {/*  <Text style={styles.cardAddress}>{info.blog}</Text>
                   <Text style={styles.tag}>{info.html_url}</Text> */}
 
                   <View style={styles.iconMore}>
+                  <TouchableOpacity activeOpacity={0.4} >
                      <Icon name="angle-right" color="gray" />
+                  </TouchableOpacity>
                   </View>
 
                   <View style={styles.margin} />
                   <View style={styles.cardBodyBottom}>
                      <View style={styles.cardGroupIcon}>
-                        <FontAwesome name="grav" size={16} />
-                        <Text style={styles.cardBottomTitle}>Website</Text>
+                     <TouchableOpacity activeOpacity={0.4}> 
+                        <FontAwesome color="gray" name="grav" size={16} onPress={() => Linking.openURL(info.blog)}  />
+                        <Text style={styles.cardBottomTitle} >Website</Text>
+                        </TouchableOpacity>
                      </View>
 
                      <View style={styles.cardGroupIcon}>
-                        <Octicons name="logo-github" size={16} />
-                        <Text style={styles.cardBottomTitle}>GitHub</Text>
+                     <TouchableOpacity activeOpacity={0.4} >
+                        <Octicons name="logo-github" size={16} onPress={() => Linking.openURL(info.html_url)} />
+                        <Text style={styles.cardBottomTitle}  >GitHub</Text>
+                        </TouchableOpacity>
+                     </View>
+
+
+                     <View style={styles.cardGroupIcon}>
+                     <TouchableOpacity activeOpacity={0.4} >
+                        <AntDesign name="sharealt" size={16} onPress={() => Linking.openURL(info.html_url)} />
+                        <Text style={styles.cardBottomTitle}  >Share</Text>
+                        </TouchableOpacity>
                      </View>
 
                   </View>
@@ -254,20 +288,21 @@ const styles = StyleSheet.create({
       flex: 1,
    },
    cardName: {
-      color: '#222',
-      fontSize: 18,
+      
+      color:'#2f4f4f' ,
+      fontSize: 20,
       fontWeight: 'bold',
    },
    cardTime: {
       color: '#708090',
-      fontSize: 16,
-      fontWeight: '500',
+      fontSize: 14,
+      fontWeight: '200',
       marginTop: 5,
    },
    cardAddress: {
       color: 'gray',
-      fontSize: 15,
-      fontWeight: '500',
+      fontSize: 16,
+      fontWeight: '600',
       marginTop: 5,
    },
    cardAvatar: {

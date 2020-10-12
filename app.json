@@ -1,12 +1,29 @@
 {
   "name": "JoaoGomes",
   "displayName": "JoaoGomes",
-  
   "expo": {
     "name": "JoaoGomes",
     "slug": "JoaoGomes",
+    "icon": "./Assets/react-logo.png",
+    "splash": {
+      "image": "./Assets/react-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#dddddd"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
+    "primaryColor": "#dddddd",
+    "privacy": "public",
+    "androidNavigationBar": {
+      "barStyle": "light-content",
+      "visible": "sticky-immersive"
+      
+    },
+    "notification": {
+    
+      "color": "#dddddd",
+      "iosDisplayInForeground": true
+    },
     "assetBundlePatterns": [
       "**/*"
     ],

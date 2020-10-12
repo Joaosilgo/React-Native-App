@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, FlatList, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 
 import Profile from './profile.js';
 
@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Explore from './screens/explore'
-import About from './screens/about'
+
 
 import _About from './screens/_about'
 import Home from './screens/home'
@@ -22,13 +22,27 @@ console.log("🚀 Running");
 
 const Tab = createBottomTabNavigator();
 
+
+
 function MyTabs() {
   return (
+
+
+    
+    
+
     <Tab.Navigator initialRouteName="Explore"
       tabBarOptions={{
-        activeTintColor: '#708090',
+        activeTintColor: '#2f4f4f',
+        inactiveTintColor: '#c0c0c0',
+        
+        
       }}
+
+   
+     
     >
+      
       <Tab.Screen name="Explore" component={Explore} options={{
         tabBarLabel: 'Explore',
         tabBarIcon: ({ color, size }) => (
@@ -37,7 +51,9 @@ function MyTabs() {
       }}
       />
       <Tab.Screen name="Home" component={Home} options={{
+        
         tabBarLabel: 'Home',
+        
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="lighthouse" color={color} size={size} />
         ),
@@ -57,7 +73,9 @@ function MyTabs() {
 
 export default function App() {
   return (
+
     <NavigationContainer>
+         
       <MyTabs />
     </NavigationContainer>
   );

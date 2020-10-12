@@ -1,8 +1,6 @@
 
 # 🚀 React Native App (JoaoGomes)
 
-
-
 ## 🎯 Objective
 
 ### Fetch Github API: <https://api.github.com/users/Joaosilgo>
@@ -78,6 +76,19 @@ Probably is network error, try disable Antivirus and Microsoft Firewall
 ````bash
 read ECONNRESET
 Error: read ECONNRESET
+
+````
+
+````bash
+=================
+ Builds Statuses
+=================
+
+### 0 | Android | https://expo.io/dashboard/joaosgomes/builds/b07c1c8f-e057-42ef-a3d6-1a0211b30655 ###  
+Build finished.
+Looks like this build could have been faster.
+Read more about priority builds at https://expo.io/settings/billing.
+APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgomes/JoaoGomes-9c8858024b30488c9b86bd9e2bc53b07-signed.apk
 
 ````
 
