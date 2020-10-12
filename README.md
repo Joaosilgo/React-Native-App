@@ -73,6 +73,10 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy unrestricted
 ````
 
+````bash
+expo build:android -t apk
+````
+
 Probably is network error, try disable Antivirus and Microsoft Firewall
 
 ````bash
@@ -96,4 +100,10 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 
 ### Artifact
 
+#### V.1.0
+
 <https://expo.io/artifacts/4cfac6e6-f355-46ee-9bdd-f7a7563341e7>
+
+#### V.3.0
+
+<https://expo.io/artifacts/4a165b09-f94a-43ad-a791-d8e9d6f34300>

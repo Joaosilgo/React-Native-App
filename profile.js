@@ -131,7 +131,7 @@ function _loadProfile() {
 
       <View>
          {
-            isLoading ? <ActivityIndicator size="small" color="#dddddd" /> : (
+            isLoading ? <ActivityIndicator size="small" color="#2f4f4f" /> : (
 
                <CardHome
                   name="Account"
@@ -377,15 +377,15 @@ const styles = StyleSheet.create({
       flex: 1,
    },
    headerContainer: {
-      padding: 20,
+      padding: 15,
       paddingHorizontal: 30,
-      marginTop: 52,
-   },
-   heading: {
-      fontSize: 32,
+      marginTop: 15,
+  },
+  heading: {
+      fontSize: 25,
       fontWeight: 'bold',
       color: '#708090',
-   },
+  },
    desc: {
       fontSize: 20,
       fontWeight: '400',

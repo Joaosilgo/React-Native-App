@@ -1,12 +1,14 @@
 
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState, Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, FlatList, Share, TouchableOpacity, ToastAndroid, RefreshControl, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
+import React, { useEffect, useState, Component, useCallback } from 'react';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, Share, TouchableOpacity, ToastAndroid, TouchableWithoutFeedback, Platform, Vibration, RefreshControl, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 async function onShare(name, description, url) {
     try {
@@ -36,9 +38,22 @@ async function onShare(name, description, url) {
 };
 
 
+
+function press()
+{
+    Vibration.vibrate(50);
+   if(Platform.OS === 'android') 
+   {
+    ToastAndroid.showWithGravity('OS: ' +  Platform.OS + ' VERSION: ' + Platform.Version , ToastAndroid.SHORT, ToastAndroid.TOP)
+    //alert('Pressed!');
+   }
+}
+
 export const CardProject = ({ info }) => {
     return (
-        <TouchableOpacity activeOpacity={0.7}>
+        //<TouchableWithoutFeedback onLongPress={() => press() }>
+        <TouchableOpacity activeOpacity={0.7} onLongPress={() => press() }>
+          
             <SafeAreaView style={styles.cardContainer}>
                 <View style={styles.cardBody}>
                     <View style={styles.cardBodyTop}>
@@ -61,9 +76,20 @@ export const CardProject = ({ info }) => {
                                     <Text color="gray" style={styles.cardBottomTitle}>{info.forks_count}</Text>
                                 </TouchableOpacity>
 
+
                                 <TouchableOpacity activeOpacity={0.4} >
                                     <AntDesign name="eye" color="gray" />
                                     <Text color="gray" style={styles.cardBottomTitle}>{info.watchers_count}</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity activeOpacity={0.4} >
+                                    <MaterialCommunityIcons name="dumbbell" color="gray" />
+                                    <Text color="gray" style={styles.cardBottomTitle}>{info.size}</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity activeOpacity={0.4} >
+                                    <Octicons name="issue-opened" color="gray" />
+                                    <Text color="gray" style={styles.cardBottomTitle}>{info.open_issues_count}</Text>
                                 </TouchableOpacity>
                             </View>
 
@@ -89,7 +115,9 @@ export const CardProject = ({ info }) => {
                     </View>
                 </View>
             </ SafeAreaView >
+       
         </TouchableOpacity>
+        //  </TouchableWithoutFeedback>
     );
 };
 
@@ -114,57 +142,120 @@ function Projects() {
 
 
 
+   
+
+    const keyExtractor = useCallback(({ id }, index) => id.toString(), []);
+
+    const renderItem = useCallback(
+        ({ item }) =>
+            (<View style={{ flex: 1 }}>
+
+
+                <CardProject
+
+                    info={{
+                        full_name: item.full_name,
+                        name: item.name,
+                        description: item.description,
+                        language: item.language,
+                        login: item.owner.login,
+                        html_url: item.html_url,
+                        stargazers_count: item.stargazers_count,
+                        forks_count: item.forks_count,
+                        watchers_count: item.watchers_count,
+                        size: item.size,
+                        open_issues_count: item.open_issues_count ,
+
+                    }}
+                />
+
+
+            </View>
+
+
+
+
+            ),
+        []
+    );
+
+
+
 
     return (
+
+
 
         /*  <View style={{ flex: 1, padding: 24, alignContent: 'center', justifyContent: 'center', }} > */
 
         <View>
             <View style={styles.headerContainer}>
                 <Text style={styles.heading} >
-                    <Entypo name="network" color="#708090" size={32} /> Projectos</Text>
+                    <Entypo name="network" color="#708090" size={20} /> Projectos</Text>
                 <Text style={styles.desc}>Repositório</Text>
+            
             </View>
 
-            {
-                isLoading ? <ActivityIndicator size="small" color="#dddddd" /> : (
-                    <FlatList
-                        data={data}
-                        keyExtractor={({ id }, index) => id.toString()}
-                        initialNumToRender={3}
-                        renderItem={({ item }) => (<View style={{ flex: 1 }} >
 
-                            {/*   <Text style={styles.title}>{"\n"}{item.name}{"\n"}</Text>
+
+            {
+                isLoading ? <ActivityIndicator size="small" color="#2f4f4f" /> : (
+
+
+
+
+                    <FlatList
+                    
+                        data={data}
+                        //  keyExtractor={({ id }, index) => id.toString()}
+                        keyExtractor={keyExtractor}
+                     //   initialNumToRender={8}
+                       // maxToRenderPerBatch={8}
+                        //updateCellsBatchingPeriod={50}
+                        renderItem={renderItem}
+
+                     //less optimal way to render files
+                        
+//       renderItem={({ item }) => (
+//
+//                            <View style={{ flex: 1 }} >
+//                                
+//
+//
+//                              <CardProject
+//
+//                                   info={{
+//                                        full_name: item.full_name,
+//                                        name: item.name,
+//                                        description: item.description,
+//                                        language: item.language,
+//                                        login: item.owner.login,
+//                                        html_url: item.html_url,
+//                                        stargazers_count: item.stargazers_count,
+//                                       forks_count: item.forks_count,
+//                                        watchers_count: item.watchers_count,
+//
+//                                    }}
+//                                />
+                                 
+
+                                        /*<Text style={styles.title}>{"\n"}{item.name}{"\n"}</Text>
                         <Text>{item.full_name}{"\n"}</Text>
                         <Text>{item.html_url}{"\n"}</Text>
                         <Text>{item.description}{"\n"}</Text>
                         <Text>{item.language}{"\n"}</Text>
-
                         <Text>{"\n"}{item.owner.login}{"\n"}</Text>
                         <TouchableHighlight >
                             <View >
                                 <Button title=" URL " onPress={() => Linking.openURL(item.html_url)}>Touch Here</Button>
                             </View>
-                        </TouchableHighlight>*/}
+                        </TouchableHighlight>*/
+
+//                            </View>)} 
+
+                                
 
 
-
-                            <CardProject
-
-                                info={{
-                                    full_name: item.full_name,
-                                    name: item.name,
-                                    description: item.description,
-                                    language: item.language,
-                                    login: item.owner.login,
-                                    html_url: item.html_url,
-                                    stargazers_count: item.stargazers_count,
-                                    forks_count: item.forks_count,
-                                    watchers_count: item.watchers_count,
-
-                                }}
-                            />
-                        </View>)}
 
                     />
                 )
@@ -267,8 +358,8 @@ const styles = StyleSheet.create({
     },
     cardTime: {
         color: '#708090',
-        fontSize: 16,
-        fontWeight: '500',
+        fontSize: 12,
+        fontWeight: '200',
         marginTop: 5,
     },
     cardAddress: {
@@ -323,12 +414,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     headerContainer: {
-        padding: 20,
-        paddingHorizontal: 30,
-        marginTop: 52,
+        padding: 15,
+        paddingHorizontal: 50,
+        marginTop: 15,
     },
     heading: {
-        fontSize: 32,
+        fontSize: 25,
         fontWeight: 'bold',
         color: '#708090',
     },

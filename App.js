@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
+import { StyleSheet, BackHandler, ToastAndroid, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Explore from './screens/explore';
 import _About from './screens/_about';
 import Home from './screens/home';
-import Profile from './profile.js';
+//import Profile from './profile.js';
 
 
 
@@ -52,7 +52,19 @@ function MyTabs() {
   );
 }
 
+BackHandler.addEventListener('hardwareBackPress', function() {
+  
+      console.log("backHandler");
+      ToastAndroid.showWithGravity('Goodbye man ... Please ComeBack 👋', ToastAndroid.LONG, ToastAndroid.TOP)
+      return false;
+     
+
+});
+
 export default function App() {
+
+
+
   return (
     <NavigationContainer>
       <MyTabs />
