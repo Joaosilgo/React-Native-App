@@ -107,3 +107,7 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 #### V.3.0
 
 <https://expo.io/artifacts/4a165b09-f94a-43ad-a791-d8e9d6f34300>
+
+#### V.4.0
+
+<https://expo.io/artifacts/cba74e4c-e9a3-4968-b2be-33b8f60553ef>
