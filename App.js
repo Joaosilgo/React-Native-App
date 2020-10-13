@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, BackHandler, ToastAndroid, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
+import { StyleSheet, BackHandler, ToastAndroid, Vibration, Platform, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,7 +25,7 @@ function MyTabs() {
         activeTintColor: '#2f4f4f',
         inactiveTintColor: '#c0c0c0',
       }}
-      >
+    >
 
       <Tab.Screen name="Explore" component={Explore} options={{
         tabBarLabel: 'Explore',
@@ -52,14 +52,18 @@ function MyTabs() {
   );
 }
 
-BackHandler.addEventListener('hardwareBackPress', function() {
-  
-      console.log("backHandler");
-      ToastAndroid.showWithGravity('Goodbye man ... Please ComeBack 👋', ToastAndroid.LONG, ToastAndroid.TOP)
-      return false;
-     
 
-});
+if (Platform.OS === 'android') {
+  BackHandler.addEventListener('hardwareBackPress', function () {
+
+    console.log("backHandler");
+    Vibration.vibrate([75, 75, 75, 75]);
+    ToastAndroid.showWithGravity('Goodbye man ... Please ComeBack 👋', ToastAndroid.LONG, ToastAndroid.CENTER)
+    return false;
+
+
+  });
+}
 
 export default function App() {
 
@@ -148,5 +152,5 @@ const styles = StyleSheet.create({
 
 const styles = StyleSheet.create({
 
-  
+
 });

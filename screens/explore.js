@@ -39,30 +39,39 @@ async function onShare(name, description, url) {
 
 
 
-function press()
-{
+function press(url) {
     Vibration.vibrate(50);
-   if(Platform.OS === 'android') 
-   {
-    ToastAndroid.showWithGravity('OS: ' +  Platform.OS + ' VERSION: ' + Platform.Version , ToastAndroid.SHORT, ToastAndroid.TOP)
-    //alert('Pressed!');
-   }
+   // if (url != null || url != nil || !url) {
+    if (url) {
+        
+        if (Platform.OS === 'android') {
+            //ToastAndroid.showWithGravity('OS: ' +  Platform.OS + ' VERSION: ' + Platform.Version , ToastAndroid.SHORT, ToastAndroid.TOP)
+            ToastAndroid.showWithGravity(url, ToastAndroid.SHORT, ToastAndroid.TOP);
+            Linking.openURL(url);
+            //alert('Pressed!');
+        }
+    }
 }
 
 export const CardProject = ({ info }) => {
     return (
         //<TouchableWithoutFeedback onLongPress={() => press() }>
-        <TouchableOpacity activeOpacity={0.7} onLongPress={() => press() }>
-          
+        <TouchableOpacity activeOpacity={0.7} onLongPress={() => press(info.homepage)}>
+
             <SafeAreaView style={styles.cardContainer}>
                 <View style={styles.cardBody}>
                     <View style={styles.cardBodyTop}>
                         <View style={styles.cardLeftSide}>
+                        { info.homepage ? <MaterialCommunityIcons name="check-decagram" color="gray" /> : ( <Text style={styles.cardAddress}>{info.homepage}</Text>)  }
                             <Text style={styles.tag}>{info.full_name}</Text>
+                            
                             <Text style={styles.cardName}>{info.name}</Text>
                             <Text style={styles.cardTime}>{info.description}</Text>
                             <Text style={styles.cardAddress}>{info.language}</Text>
                             <Text style={styles.cardAddress}>{info.login}</Text>
+
+                          
+
                             {/*  <Text style={styles.tag}>{info.html_url}</Text> */}
                             <View style={styles.cardBodyBottom}>
 
@@ -93,9 +102,11 @@ export const CardProject = ({ info }) => {
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={styles.iconMore}>
-                                <Icon name="angle-right" color="gray" onPress={() => Linking.openURL(info.html_url)} />
-                            </View>
+                            <TouchableOpacity activeOpacity={0.4} onPress={() => Linking.openURL(info.homepage)}  >
+                                <View style={styles.iconMore}>
+                                    <Icon name="angle-right" color="gray" />
+                                </View>
+                            </TouchableOpacity>
 
                             <View style={styles.margin} />
                             <View style={styles.cardBodyBottom} >
@@ -115,7 +126,7 @@ export const CardProject = ({ info }) => {
                     </View>
                 </View>
             </ SafeAreaView >
-       
+
         </TouchableOpacity>
         //  </TouchableWithoutFeedback>
     );
@@ -142,7 +153,7 @@ function Projects() {
 
 
 
-   
+
 
     const keyExtractor = useCallback(({ id }, index) => id.toString(), []);
 
@@ -164,7 +175,8 @@ function Projects() {
                         forks_count: item.forks_count,
                         watchers_count: item.watchers_count,
                         size: item.size,
-                        open_issues_count: item.open_issues_count ,
+                        open_issues_count: item.open_issues_count,
+                        homepage: item.homepage
 
                     }}
                 />
@@ -193,7 +205,7 @@ function Projects() {
                 <Text style={styles.heading} >
                     <Entypo name="network" color="#708090" size={20} /> Projectos</Text>
                 <Text style={styles.desc}>Repositório</Text>
-            
+
             </View>
 
 
@@ -205,55 +217,55 @@ function Projects() {
 
 
                     <FlatList
-                    
+
                         data={data}
                         //  keyExtractor={({ id }, index) => id.toString()}
                         keyExtractor={keyExtractor}
-                     //   initialNumToRender={8}
-                       // maxToRenderPerBatch={8}
+                        //   initialNumToRender={8}
+                        // maxToRenderPerBatch={8}
                         //updateCellsBatchingPeriod={50}
                         renderItem={renderItem}
 
-                     //less optimal way to render files
-                        
-//       renderItem={({ item }) => (
-//
-//                            <View style={{ flex: 1 }} >
-//                                
-//
-//
-//                              <CardProject
-//
-//                                   info={{
-//                                        full_name: item.full_name,
-//                                        name: item.name,
-//                                        description: item.description,
-//                                        language: item.language,
-//                                        login: item.owner.login,
-//                                        html_url: item.html_url,
-//                                        stargazers_count: item.stargazers_count,
-//                                       forks_count: item.forks_count,
-//                                        watchers_count: item.watchers_count,
-//
-//                                    }}
-//                                />
-                                 
+                    //less optimal way to render files
 
-                                        /*<Text style={styles.title}>{"\n"}{item.name}{"\n"}</Text>
-                        <Text>{item.full_name}{"\n"}</Text>
-                        <Text>{item.html_url}{"\n"}</Text>
-                        <Text>{item.description}{"\n"}</Text>
-                        <Text>{item.language}{"\n"}</Text>
-                        <Text>{"\n"}{item.owner.login}{"\n"}</Text>
-                        <TouchableHighlight >
-                            <View >
-                                <Button title=" URL " onPress={() => Linking.openURL(item.html_url)}>Touch Here</Button>
-                            </View>
-                        </TouchableHighlight>*/
+                    //       renderItem={({ item }) => (
+                    //
+                    //                            <View style={{ flex: 1 }} >
+                    //                                
+                    //
+                    //
+                    //                              <CardProject
+                    //
+                    //                                   info={{
+                    //                                        full_name: item.full_name,
+                    //                                        name: item.name,
+                    //                                        description: item.description,
+                    //                                        language: item.language,
+                    //                                        login: item.owner.login,
+                    //                                        html_url: item.html_url,
+                    //                                        stargazers_count: item.stargazers_count,
+                    //                                       forks_count: item.forks_count,
+                    //                                        watchers_count: item.watchers_count,
+                    //
+                    //                                    }}
+                    //                                />
 
-//                            </View>)} 
 
-                                
+                    /*<Text style={styles.title}>{"\n"}{item.name}{"\n"}</Text>
+    <Text>{item.full_name}{"\n"}</Text>
+    <Text>{item.html_url}{"\n"}</Text>
+    <Text>{item.description}{"\n"}</Text>
+    <Text>{item.language}{"\n"}</Text>
+    <Text>{"\n"}{item.owner.login}{"\n"}</Text>
+    <TouchableHighlight >
+        <View >
+            <Button title=" URL " onPress={() => Linking.openURL(item.html_url)}>Touch Here</Button>
+        </View>
+    </TouchableHighlight>*/
+
+                    //                            </View>)} 
+
+
 
 
 
