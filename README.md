@@ -1,19 +1,17 @@
 
 # 🚀 React Native App (JoaoGomes)
 
-
-
-
 <div class="row" >
 
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/1.jpg?raw=true' width="20%" />
+
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/2.jpg?raw=true' width="20%" />
+
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/3.jpg?raw=true' width="20%" />
+
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/4.jpg?raw=true' width="20%" />
 
 </div>
-
-
 
 ## 🎯 Objective
 
@@ -24,10 +22,6 @@
 ### Contact Form
 
 ### Social Media Footer
-
-
-
-
 
 ## Use (Development)
 
