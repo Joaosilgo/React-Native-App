@@ -40,6 +40,30 @@ create-react-native-app JoaoGomes
 
 ## Github Api v3
 
+## Dependecies
+
+````json
+
+ "dependencies": {
+    "@react-navigation/bottom-tabs": "^5.9.2",
+    "@react-navigation/native": "^5.7.6",
+    "@react-navigation/stack": "^5.9.3",
+    "expo": "~39.0.2",
+    "expo-splash-screen": "~0.6.2",
+    "expo-status-bar": "~1.0.2",
+    "expo-updates": "~0.3.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "~0.63.3",
+    "react-native-gesture-handler": "~1.7.0",
+    "react-native-reanimated": "~1.13.0",
+    "react-native-screens": "~2.10.1",
+    "react-native-unimodules": "~0.11.0",
+    "react-native-web": "~0.13.12",
+    "@react-native-community/masked-view": "0.1.10"
+  }
+  ````
+
 ````bash
 echo "# React-Native-App" >> README.md
 git init
