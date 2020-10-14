@@ -2,11 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, BackHandler, ToastAndroid, Vibration, Platform, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Explore from './screens/explore';
 import _About from './screens/_about';
 import Home from './screens/home';
+import Info from './screens/SharedElements/Info'
 //import Profile from './profile.js';
 
 
@@ -45,6 +47,14 @@ function MyTabs() {
         tabBarLabel: 'About',
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name="barley" color={color} size={size} />
+        ),
+      }}
+      />
+
+      <Tab.Screen name="Info" component={Info} options={{
+        tabBarLabel: 'Info',
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesome5 name="om" color={color} size={size} />
         ),
       }}
       />
