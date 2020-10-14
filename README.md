@@ -112,9 +112,17 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 
 ### Artifact
 
+#### Builds
+
+##### At <https://expo.io/accounts/joaosgomes/>
+
 #### V.1.0
 
 <https://expo.io/artifacts/4cfac6e6-f355-46ee-9bdd-f7a7563341e7>
+
+#### V.2.0
+
+<https://expo.io/artifacts/2305761b-336c-42dd-869f-3a40fd2b687b>
 
 #### V.3.0
 
@@ -123,3 +131,9 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 #### V.4.0
 
 <https://expo.io/artifacts/cba74e4c-e9a3-4968-b2be-33b8f60553ef>
+
+#### V.5.0
+
+<https://expo.io/artifacts/2f456a91-c953-4ce8-a889-06003201ad2a>
+
+<https://expo.io/artifacts/2305761b-336c-42dd-869f-3a40fd2b687b>
