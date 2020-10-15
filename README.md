@@ -164,4 +164,5 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 
 <https://expo.io/artifacts/2f456a91-c953-4ce8-a889-06003201ad2a>
 
-<https://expo.io/artifacts/2305761b-336c-42dd-869f-3a40fd2b687b>
+#### V.6.0
+https://expo.io/artifacts/9d0b25bc-bb3d-44ea-ba88-ace6ef32a81f
