@@ -4,9 +4,33 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Alert, Vibration, Toas
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 import Octicons from 'react-native-vector-icons/Octicons';
 import Zocial from 'react-native-vector-icons/Zocial';
 import * as theme from './theme';
+
+import * as SMS from 'expo-sms';
+
+async function sendSMS() {
+
+   const isAvailable = await SMS.isAvailableAsync();
+   if (isAvailable) {
+      // do your SMS stuff here
+
+      const { result } = await SMS.sendSMSAsync(
+         ['+351964575619'],
+         'hi There 🎉',
+
+      );
+   } else {
+      // misfortune... there's no SMS available on this device
+      console.log('misfortune... theres no SMS available on this device');
+   }
+
+}
+
+
 
 const ONE_SECOND_IN_MS = 1000;
 const PATTERN = [75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 225, 75, 75, 75, 225, 75, 75, 75, 225, 75, 75, 75, 225, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75, 75, 225, 75, 75, 75, 75, 75, 75];
@@ -68,6 +92,13 @@ export const CardHome = ({ name, info }) => {
                         <TouchableOpacity activeOpacity={0.4} onPress={() => Linking.openURL(info.html_url)} >
                            <Octicons color="gray" name="logo-github" size={16} onPress={() => Linking.openURL(info.html_url)} />
                            <Text style={styles.cardBottomTitle} >GitHub</Text>
+                        </TouchableOpacity>
+                     </View>
+
+                     <View style={styles.cardGroupIcon}>
+                        <TouchableOpacity activeOpacity={0.4} onPress={sendSMS} >
+                           <FontAwesome5 color="gray" name="sms" size={16} onPress={sendSMS} />
+                           <Text style={styles.cardBottomTitle} >SMS</Text>
                         </TouchableOpacity>
                      </View>
 
@@ -380,12 +411,12 @@ const styles = StyleSheet.create({
       padding: 15,
       paddingHorizontal: 30,
       marginTop: 15,
-  },
-  heading: {
+   },
+   heading: {
       fontSize: 25,
       fontWeight: 'bold',
       color: '#708090',
-  },
+   },
    desc: {
       fontSize: 20,
       fontWeight: '400',

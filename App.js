@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, BackHandler, ToastAndroid, Vibration, Platform, Text, View, ActivityIndicator, FlatList, TouchableOpacity, ScrollView, SafeAreaView, TouchableHighlight, Linking, Button } from 'react-native';
+
+import React from 'react';
+import { StyleSheet, BackHandler, ToastAndroid, Vibration, Platform,  } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { NavigationContainer } from '@react-navigation/native';
@@ -62,7 +63,6 @@ function MyTabs() {
   );
 }
 
-
 if (Platform.OS === 'android') {
   BackHandler.addEventListener('hardwareBackPress', function () {
 
@@ -77,8 +77,6 @@ if (Platform.OS === 'android') {
 
 export default function App() {
 
-
-
   return (
     <NavigationContainer>
       <MyTabs />
@@ -86,7 +84,7 @@ export default function App() {
   );
 }
 
-/*
+{/*
 
 export default function App() {
 
@@ -158,7 +156,7 @@ const styles = StyleSheet.create({
   }
 
 });
-*/
+*/}
 
 const styles = StyleSheet.create({
 
