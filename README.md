@@ -11,6 +11,10 @@
 
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/4.jpg?raw=true' width="20%" />
 
+<img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/5.jpg?raw=true' width="20%" />
+
+<img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/6.jpg?raw=true' width="20%" />
+
 </div>
 
 ## 🎯 Objective
