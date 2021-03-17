@@ -1,7 +1,10 @@
 
 # 🚀 React Native App (JoaoGomes)
 
-<div class="row" >
+
+  
+
+ <div class="row" >
 
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/1.jpg?raw=true' width="20%" />
 
@@ -14,17 +17,33 @@
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/5.jpg?raw=true' width="20%" />
 
 <img src='https://github.com/Joaosilgo/React-Native-App/blob/media/Assets/6.jpg?raw=true' width="20%" />
+ 
+ </div>
+
+
+
+<div
+data-snack-id="@joaosgomes/github.com-joaosilgo-react-native-app" 
+data-snack-platform="android" 
+data-snack-preview="true" 
+data-snack-theme="light" 
+style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%">
 
 </div>
 
-<div data-snack-id="@joaosgomes/github.com-joaosilgo-react-native-app" data-snack-platform="android" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+
+
+
+
 
 
 
  
- <script async src="https://snack.expo.io/embed.js"></script>
+
 
 ## 🎯 Objective
+
+
 
 ### Fetch Github API: <https://api.github.com/users/Joaosilgo>
 
@@ -173,3 +192,5 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 
 #### V.6.0
 https://expo.io/artifacts/9d0b25bc-bb3d-44ea-ba88-ace6ef32a81f
+
+  <script async src="https://snack.expo.io/embed.js"></script>
