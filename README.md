@@ -22,16 +22,6 @@
 
 
 
-<div
-data-snack-id="@joaosgomes/github.com-joaosilgo-react-native-app" 
-data-snack-platform="android" 
-data-snack-preview="true" 
-data-snack-theme="light" 
-style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%">
-
-</div>
-
-
 
 
 
@@ -193,4 +183,4 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 #### V.6.0
 https://expo.io/artifacts/9d0b25bc-bb3d-44ea-ba88-ace6ef32a81f
 
-  <script async src="https://snack.expo.io/embed.js"></script>
+  
