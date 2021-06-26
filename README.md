@@ -153,6 +153,35 @@ APK: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40joaosgom
 
 ````
 
+## Build And Release Using Github Action
+
+
+````yml
+name: Build Android
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+      - name: Make Gradlew Executable
+        run: cd android && chmod +x ./gradlew
+      - name: Build Android Release
+        run: cd android && ./gradlew assembleRelease
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: android/app/build/outputs/apk/release/app-release.apk
+
+````
+
 ### Artifact
 
 #### Builds
