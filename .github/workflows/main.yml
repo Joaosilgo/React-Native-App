@@ -11,9 +11,9 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Make Gradlew Executable
-        run: cd android && chmod +x ./gradlew
+        run: cd android && ./gradlew clean &&  chmod +x ./gradlew
       - name: Build Android Release
-        run: cd android && ./gradlew assembleRelease
+        run: cd android && ./gradlew clean && ./gradlew assembleRelease
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
