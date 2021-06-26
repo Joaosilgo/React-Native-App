@@ -18,9 +18,7 @@ jobs:
         run: |
           npm install
       # For testing
-      - name: Run tests
-        run: |
-          npm test
+      
   # Second Job
   build-android:
     needs: install-and-test
