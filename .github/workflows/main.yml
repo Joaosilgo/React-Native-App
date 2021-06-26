@@ -11,7 +11,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Make Gradlew Executable
-        run: cd android && ./gradlew clean &&  chmod +x ./gradlew
+        run: cd android && chmod +x ./gradlew
       - name: Build Android Release
         run: cd android && ./gradlew clean && ./gradlew assembleRelease
 
