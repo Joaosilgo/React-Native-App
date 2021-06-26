@@ -7,7 +7,7 @@ branding:
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   # First Job
   install-and-test:
